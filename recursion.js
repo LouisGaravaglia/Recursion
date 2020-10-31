@@ -39,8 +39,12 @@ function isPalindrome(str, i = 0, palindrome=true) {
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
 
-function findIndex(arr, val) {
-
+function findIndex(arr, val, idx=0) {
+  //basecase
+  if (idx === arr.length) return -1;
+  //normalcase
+  if (arr[idx] === val) return idx;
+  return findIndex(arr, val, idx + 1)
 }
 
 /** revString: return a copy of a string, but in reverse. */
