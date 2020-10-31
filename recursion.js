@@ -34,7 +34,7 @@ function isPalindrome(str, i = 0, palindrome=true) {
   if (i >= str.length) return palindrome;
   //normalcase
   if (str[i] !== str[str.length - i - 1]) palindrome = false;
-  return isPalindrome(str, i = 1, palindrome)
+  return isPalindrome(str, i + 1, palindrome)
 }
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
@@ -49,8 +49,12 @@ function findIndex(arr, val, idx=0) {
 
 /** revString: return a copy of a string, but in reverse. */
 
-function revString(str) {
-
+function revString(str, i=str.length-1, newStr="") {
+  //basecase
+  if (i === 0) return newStr;
+  //normalcase
+  newStr += str[i];
+  return revString(str, i - 1, newStr)
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
