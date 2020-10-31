@@ -49,19 +49,19 @@ function findIndex(arr, val, idx=0) {
 
 /** revString: return a copy of a string, but in reverse. */
 
-function revString(str, i=str.length-1, newStr="") {
+function revString(str, i=0, newStr="") {
   //basecase
-  if (i === 0) return newStr;
+  if (i === str.length) return newStr;
   //normalcase
-  newStr += str[i];
-  return revString(str, i - 1, newStr)
+  newStr += str[str.length - 1 - i];
+  return revString(str, i + 1, newStr)
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
 function gatherStrings(obj) {  
   let stringArr = [];
-  for (let key of obj) {
+  for (let key in obj) {
     if (typeof obj[key] === "string") stringArr.push(obj[key]);
     if (typeof obj[key] === "object") stringArr.push(...gatherStrings(obj[key]));
   }
@@ -77,10 +77,13 @@ function binarySearch( arr, val, left = 0, right = arr.length ) {
   //normalcase
   let mid = Math.floor( ( right + left ) / 2 );
   if (arr[mid] === val) return mid;
-  if (arr[mid] > val) return binarySearch( arr, val, left, right = mid-1 );
-  if (arr[mid] < val) return binarySearch( arr, val, left = mid + 1, right );
+  if (arr[mid] > val) return binarySearch( arr, val, left, mid - 1 );
+  if (arr[mid] < val) return binarySearch( arr, val, mid + 1, right );
 
 }
+
+
+
 
 module.exports = {
   product,
