@@ -19,14 +19,22 @@ function longest(words, i = 0, longestSoFar=0) {
 
 /** everyOther: return a string with every other letter. */
 
-function everyOther(str) {
-
+function everyOther(str, i = 0, newStr="") {
+  //basecase
+  if (i >= str.length) return newStr;
+  //normalcase
+  newStr += str[i];
+  return everyOther(str, i + 2, newStr)
 }
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
-function isPalindrome(str) {
-
+function isPalindrome(str, i = 0, palindrome=true) {
+  //basecase
+  if (i >= str.length) return palindrome;
+  //normalcase
+  if (str[i] !== str[str.length - i - 1]) palindrome = false;
+  return isPalindrome(str, i = 1, palindrome)
 }
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
